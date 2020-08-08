@@ -111,7 +111,8 @@ ARM Macro Assembler    Page 2
    71 00000020 00000000        DCD              0           ; Reserved
    72 00000024 00000000        DCD              0           ; Reserved
    73 00000028 00000000        DCD              0           ; Reserved
-   74 0000002C 00000000        DCD              SVC_Handler ; SVCall Handler
+   74 0000002C 00000000        DCD              Isr_SvcHandler ; SVCall Handler
+                                                            
    75 00000030 00000000        DCD              DebugMon_Handler ; Debug Monito
                                                             r Handler
    76 00000034 00000000        DCD              0           ; Reserved
@@ -127,13 +128,13 @@ ARM Macro Assembler    Page 2
    83 00000044 00000000        DCD              GPIOB_Handler 
                                                             ;   1: GPIO Port B
    84 00000048 00000000        DCD              GPIOC_Handler 
-                                                            ;   2: GPIO Port C
 
 
 
 ARM Macro Assembler    Page 3 
 
 
+                                                            ;   2: GPIO Port C
    85 0000004C 00000000        DCD              GPIOD_Handler 
                                                             ;   3: GPIO Port D
    86 00000050 00000000        DCD              GPIOE_Handler 
@@ -192,13 +193,13 @@ ARM Macro Assembler    Page 3
   112 000000B8 00000000        DCD              GPIOF_Handler 
                                                             ;  30: GPIO Port F
   113 000000BC 00000000        DCD              GPIOG_Handler 
-                                                            ;  31: GPIO Port G
 
 
 
 ARM Macro Assembler    Page 4 
 
 
+                                                            ;  31: GPIO Port G
   114 000000C0 00000000        DCD              GPIOH_Handler 
                                                             ;  32: GPIO Port H
   115 000000C4 00000000        DCD              UART2_Handler ;  33: UART2 Rx a
@@ -257,13 +258,13 @@ ARM Macro Assembler    Page 4
                                                             nd Tx
   146 00000140 00000000        DCD              0           ;  64: Reserved
   147 00000144 00000000        DCD              0           ;  65: Reserved
-  148 00000148 00000000        DCD              0           ;  66: Reserved
 
 
 
 ARM Macro Assembler    Page 5 
 
 
+  148 00000148 00000000        DCD              0           ;  66: Reserved
   149 0000014C 00000000        DCD              0           ;  67: Reserved
   150 00000150 00000000        DCD              I2C2_Handler ;  68: I2C2 Master
                                                              and Slave
@@ -322,13 +323,13 @@ ARM Macro Assembler    Page 5
   187 000001E4 00000000        DCD              WTIMER5B_Handler ; 105: Wide Ti
                                                             mer 5 subtimer B
   188 000001E8 00000000        DCD              FPU_Handler ; 106: FPU
-  189 000001EC 00000000        DCD              0           ; 107: Reserved
 
 
 
 ARM Macro Assembler    Page 6 
 
 
+  189 000001EC 00000000        DCD              0           ; 107: Reserved
   190 000001F0 00000000        DCD              0           ; 108: Reserved
   191 000001F4 00000000        DCD              I2C4_Handler ; 109: I2C4 Master
                                                              and Slave
@@ -387,13 +388,13 @@ ARM Macro Assembler    Page 6
                                                             
   213 0000024C 00000000        DCD              GPIOQ7_Handler 
                                                             ; 131: GPIO Port Q7
-                                                            
 
 
 
 ARM Macro Assembler    Page 7 
 
 
+                                                            
   214 00000250 00000000        DCD              GPIOR_Handler 
                                                             ; 132: GPIO Port R
   215 00000254 00000000        DCD              GPIOS_Handler 
@@ -452,13 +453,13 @@ ARM Macro Assembler    Page 7
                                PROC
   255 0000000C                 EXPORT           MemManage_Handler         [WEAK
 ]
-  256 0000000C E7FE            B                .
 
 
 
 ARM Macro Assembler    Page 8 
 
 
+  256 0000000C E7FE            B                .
   257 0000000E                 ENDP
   259 0000000E         BusFault_Handler
                                PROC
@@ -472,10 +473,10 @@ ARM Macro Assembler    Page 8
 ]
   266 00000010 E7FE            B                .
   267 00000012                 ENDP
-  268 00000012         SVC_Handler
+  268 00000012         Isr_SvcHandler
                                PROC
-  269 00000012                 EXPORT           SVC_Handler               [WEAK
-]
+  269 00000012                 EXPORT           Isr_SvcHandler               [W
+EAK]
   270 00000012 E7FE            B                .
   271 00000014                 ENDP
   273 00000014         DebugMon_Handler
@@ -517,13 +518,13 @@ ARM Macro Assembler    Page 8
   305 00000020         
   307 00000020         GPIOD_Handler
                                PROC
-  308 00000020                 EXPORT           GPIOD_Handler [WEAK]
 
 
 
 ARM Macro Assembler    Page 9 
 
 
+  308 00000020                 EXPORT           GPIOD_Handler [WEAK]
   309 00000020 E7FE            B                .
   310 00000022                 ENDP
   311 00000022         
@@ -582,13 +583,13 @@ ARM Macro Assembler    Page 9
   364 00000034                 ENDP
   365 00000034         
   367 00000034         QEI0_Handler
-                               PROC
 
 
 
 ARM Macro Assembler    Page 10 
 
 
+                               PROC
   368 00000034                 EXPORT           QEI0_Handler [WEAK]
   369 00000034 E7FE            B                .
   370 00000036                 ENDP
@@ -647,13 +648,13 @@ ARM Macro Assembler    Page 10
   423 00000046 E7FE            B                .
   424 00000048                 ENDP
   425 00000048         
-  427 00000048         TIMER2A_Handler
 
 
 
 ARM Macro Assembler    Page 11 
 
 
+  427 00000048         TIMER2A_Handler
                                PROC
   428 00000048                 EXPORT           TIMER2A_Handler [WEAK]
   429 00000048 E7FE            B                .
@@ -712,13 +713,13 @@ ARM Macro Assembler    Page 11
   482 0000005A                 EXPORT           GPIOH_Handler [WEAK]
   483 0000005A E7FE            B                .
   484 0000005C                 ENDP
-  485 0000005C         
 
 
 
 ARM Macro Assembler    Page 12 
 
 
+  485 0000005C         
   487 0000005C         UART2_Handler
                                PROC
   488 0000005C                 EXPORT           UART2_Handler [WEAK]
@@ -777,13 +778,13 @@ ARM Macro Assembler    Page 12
                                PROC
   542 0000006E                 EXPORT           HIB_Handler [WEAK]
   543 0000006E E7FE            B                .
-  544 00000070                 ENDP
 
 
 
 ARM Macro Assembler    Page 13 
 
 
+  544 00000070                 ENDP
   545 00000070         
   547 00000070         USB0_Handler
                                PROC
@@ -842,13 +843,13 @@ ARM Macro Assembler    Page 13
   601 00000082         GPIOK_Handler
                                PROC
   602 00000082                 EXPORT           GPIOK_Handler [WEAK]
-  603 00000082 E7FE            B                .
 
 
 
 ARM Macro Assembler    Page 14 
 
 
+  603 00000082 E7FE            B                .
   604 00000084                 ENDP
   605 00000084         
   607 00000084         GPIOL_Handler
@@ -907,13 +908,13 @@ ARM Macro Assembler    Page 14
   659 00000096         
   661 00000096         I2C3_Handler
                                PROC
-  662 00000096                 EXPORT           I2C3_Handler [WEAK]
 
 
 
 ARM Macro Assembler    Page 15 
 
 
+  662 00000096                 EXPORT           I2C3_Handler [WEAK]
   663 00000096 E7FE            B                .
   664 00000098                 ENDP
   665 00000098         
@@ -972,13 +973,13 @@ ARM Macro Assembler    Page 15
   718 000000AA                 ENDP
   719 000000AA         
   721 000000AA         WTIMER2B_Handler
-                               PROC
 
 
 
 ARM Macro Assembler    Page 16 
 
 
+                               PROC
   722 000000AA                 EXPORT           WTIMER2B_Handler [WEAK]
   723 000000AA E7FE            B                .
   724 000000AC                 ENDP
@@ -1037,13 +1038,13 @@ ARM Macro Assembler    Page 16
   777 000000BC E7FE            B                .
   778 000000BE                 ENDP
   779 000000BE         
-  781 000000BE         GPIOM_Handler
 
 
 
 ARM Macro Assembler    Page 17 
 
 
+  781 000000BE         GPIOM_Handler
                                PROC
   782 000000BE                 EXPORT           GPIOM_Handler [WEAK]
   783 000000BE E7FE            B                .
@@ -1102,13 +1103,13 @@ ARM Macro Assembler    Page 17
   836 000000D0                 EXPORT           GPIOP6_Handler [WEAK]
   837 000000D0 E7FE            B                .
   838 000000D2                 ENDP
-  839 000000D2         
 
 
 
 ARM Macro Assembler    Page 18 
 
 
+  839 000000D2         
   841 000000D2         GPIOP7_Handler
                                PROC
   842 000000D2                 EXPORT           GPIOP7_Handler [WEAK]
@@ -1167,13 +1168,13 @@ ARM Macro Assembler    Page 18
                                PROC
   896 000000E4                 EXPORT           GPIOR_Handler [WEAK]
   897 000000E4 E7FE            B                .
-  898 000000E6                 ENDP
 
 
 
 ARM Macro Assembler    Page 19 
 
 
+  898 000000E6                 ENDP
   899 000000E6         
   901 000000E6         GPIOS_Handler
                                PROC
@@ -1232,13 +1233,13 @@ ARM Macro Assembler    Page 19
   960 00000100         
   961 00000100                 ENDIF
   962 00000100         
-  963 00000100         
 
 
 
 ARM Macro Assembler    Page 20 
 
 
+  963 00000100         
   964 00000100                 END
               00000000 
               00000000 
@@ -1933,7 +1934,22 @@ Symbol: I2C5_Handler
       At line 192 in file RTE\Device\TM4C1230H6PM\startup_TM4C123.s
       At line 776 in file RTE\Device\TM4C1230H6PM\startup_TM4C123.s
 
+Isr_SvcHandler 00000012
+
+Symbol: Isr_SvcHandler
+   Definitions
+      At line 268 in file RTE\Device\TM4C1230H6PM\startup_TM4C123.s
+   Uses
+      At line 74 in file RTE\Device\TM4C1230H6PM\startup_TM4C123.s
+      At line 269 in file RTE\Device\TM4C1230H6PM\startup_TM4C123.s
+
 MemManage_Handler 0000000C
+
+
+
+ARM Macro Assembler    Page 10 Alphabetic symbol ordering
+Relocatable symbols
+
 
 Symbol: MemManage_Handler
    Definitions
@@ -1943,12 +1959,6 @@ Symbol: MemManage_Handler
       At line 255 in file RTE\Device\TM4C1230H6PM\startup_TM4C123.s
 
 NMI_Handler 00000008
-
-
-
-ARM Macro Assembler    Page 10 Alphabetic symbol ordering
-Relocatable symbols
-
 
 Symbol: NMI_Handler
    Definitions
@@ -1999,6 +2009,12 @@ Symbol: PWM0_2_Handler
    Definitions
       At line 361 in file RTE\Device\TM4C1230H6PM\startup_TM4C123.s
    Uses
+
+
+
+ARM Macro Assembler    Page 11 Alphabetic symbol ordering
+Relocatable symbols
+
       At line 94 in file RTE\Device\TM4C1230H6PM\startup_TM4C123.s
       At line 362 in file RTE\Device\TM4C1230H6PM\startup_TM4C123.s
 
@@ -2008,12 +2024,6 @@ Symbol: PWM0_3_Handler
    Definitions
       At line 553 in file RTE\Device\TM4C1230H6PM\startup_TM4C123.s
    Uses
-
-
-
-ARM Macro Assembler    Page 11 Alphabetic symbol ordering
-Relocatable symbols
-
       At line 127 in file RTE\Device\TM4C1230H6PM\startup_TM4C123.s
       At line 554 in file RTE\Device\TM4C1230H6PM\startup_TM4C123.s
 
@@ -2064,6 +2074,12 @@ Symbol: PendSV_Handler
 
 QEI0_Handler 00000034
 
+
+
+
+ARM Macro Assembler    Page 12 Alphabetic symbol ordering
+Relocatable symbols
+
 Symbol: QEI0_Handler
    Definitions
       At line 367 in file RTE\Device\TM4C1230H6PM\startup_TM4C123.s
@@ -2072,12 +2088,6 @@ Symbol: QEI0_Handler
       At line 368 in file RTE\Device\TM4C1230H6PM\startup_TM4C123.s
 
 QEI1_Handler 00000066
-
-
-
-
-ARM Macro Assembler    Page 12 Alphabetic symbol ordering
-Relocatable symbols
 
 Symbol: QEI1_Handler
    Definitions
@@ -2129,6 +2139,12 @@ Symbol: SSI2_Handler
       At line 613 in file RTE\Device\TM4C1230H6PM\startup_TM4C123.s
    Uses
       At line 139 in file RTE\Device\TM4C1230H6PM\startup_TM4C123.s
+
+
+
+ARM Macro Assembler    Page 13 Alphabetic symbol ordering
+Relocatable symbols
+
       At line 614 in file RTE\Device\TM4C1230H6PM\startup_TM4C123.s
 
 SSI3_Handler 00000088
@@ -2138,22 +2154,7 @@ Symbol: SSI3_Handler
       At line 619 in file RTE\Device\TM4C1230H6PM\startup_TM4C123.s
    Uses
       At line 140 in file RTE\Device\TM4C1230H6PM\startup_TM4C123.s
-
-
-
-ARM Macro Assembler    Page 13 Alphabetic symbol ordering
-Relocatable symbols
-
       At line 620 in file RTE\Device\TM4C1230H6PM\startup_TM4C123.s
-
-SVC_Handler 00000012
-
-Symbol: SVC_Handler
-   Definitions
-      At line 268 in file RTE\Device\TM4C1230H6PM\startup_TM4C123.s
-   Uses
-      At line 74 in file RTE\Device\TM4C1230H6PM\startup_TM4C123.s
-      At line 269 in file RTE\Device\TM4C1230H6PM\startup_TM4C123.s
 
 SYSCTL_Handler 00000052
 

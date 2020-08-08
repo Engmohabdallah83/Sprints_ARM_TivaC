@@ -52,7 +52,7 @@
           <OutputName>TM4C123_Drivers</OutputName>
           <CreateExecutable>1</CreateExecutable>
           <CreateLib>0</CreateLib>
-          <CreateHexFile>0</CreateHexFile>
+          <CreateHexFile>1</CreateHexFile>
           <DebugInformation>1</DebugInformation>
           <BrowseInformation>1</BrowseInformation>
           <ListingPath>.\Listings\</ListingPath>
@@ -338,7 +338,7 @@
               <MiscControls></MiscControls>
               <Define></Define>
               <Undefine></Undefine>
-              <IncludePath>..\Sprints_ARM_TivaC\Sprints_ARM_MC01\src\appl;..\Sprints_ARM_TivaC\Sprints_ARM_MC01\src\common;..\Sprints_ARM_TivaC\Sprints_ARM_MC01\src\Config;..\Sprints_ARM_TivaC\Sprints_ARM_MC01\src\mcal\Inc;..\Sprints_ARM_TivaC\Sprints_ARM_MC01\src\mcal</IncludePath>
+              <IncludePath>..\Sprints_ARM_TivaC\Sprints_ARM_MC01\src\appl;..\Sprints_ARM_TivaC\Sprints_ARM_MC01\src\common;..\Sprints_ARM_TivaC\Sprints_ARM_MC01\src\Config;..\Sprints_ARM_TivaC\Sprints_ARM_MC01\src\mcal\Inc;..\Sprints_ARM_TivaC\Sprints_ARM_MC01\src\mcal;..\Sprints_ARM_TivaC\Sprints_ARM_MC01\src\mcal\Inc</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -383,11 +383,6 @@
           <GroupName>appl</GroupName>
           <Files>
             <File>
-              <FileName>_01_nvic_user.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\Sprints_ARM_TivaC\Sprints_ARM_MC01\src\appl\_01_nvic_user.c</FilePath>
-            </File>
-            <File>
               <FileName>MainApp.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\Sprints_ARM_TivaC\Sprints_ARM_MC01\src\appl\MainApp.c</FilePath>
@@ -398,11 +393,6 @@
               <FilePath>..\Sprints_ARM_TivaC\Sprints_ARM_MC01\src\appl\S02_CpuUser.c</FilePath>
             </File>
             <File>
-              <FileName>S03_NvicUser.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\Sprints_ARM_TivaC\Sprints_ARM_MC01\src\appl\S03_NvicUser.c</FilePath>
-            </File>
-            <File>
               <FileName>S04_McuUser.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\Sprints_ARM_TivaC\Sprints_ARM_MC01\src\appl\S04_McuUser.c</FilePath>
@@ -411,6 +401,21 @@
               <FileName>S05_PortUser.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\Sprints_ARM_TivaC\Sprints_ARM_MC01\src\appl\S05_PortUser.c</FilePath>
+            </File>
+            <File>
+              <FileName>S03_NvicUser.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Sprints_ARM_TivaC\Sprints_ARM_MC01\src\appl\S03_NvicUser.c</FilePath>
+            </File>
+            <File>
+              <FileName>_01_nvic_user.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Sprints_ARM_TivaC\Sprints_ARM_MC01\src\appl\_01_nvic_user.c</FilePath>
+            </File>
+            <File>
+              <FileName>S06_AdcUser.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Sprints_ARM_TivaC\Sprints_ARM_MC01\src\appl\S06_AdcUser.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -441,6 +446,11 @@
               <FileName>Port.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\Sprints_ARM_TivaC\Sprints_ARM_MC01\src\mcal\Port.c</FilePath>
+            </File>
+            <File>
+              <FileName>ADC.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Sprints_ARM_TivaC\Sprints_ARM_MC01\src\mcal\ADC.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -473,19 +483,9 @@
           <GroupName>config</GroupName>
           <Files>
             <File>
-              <FileName>Mcu_Cfg.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\Sprints_ARM_TivaC\Sprints_ARM_MC01\src\Config\Mcu_Cfg.h</FilePath>
-            </File>
-            <File>
               <FileName>Mcu_Lcfg.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\Sprints_ARM_TivaC\Sprints_ARM_MC01\src\Config\Mcu_Lcfg.c</FilePath>
-            </File>
-            <File>
-              <FileName>Nvic_Cfg.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\Sprints_ARM_TivaC\Sprints_ARM_MC01\src\Config\Nvic_Cfg.h</FilePath>
             </File>
             <File>
               <FileName>Nvic_Lcfg.c</FileName>
@@ -493,14 +493,14 @@
               <FilePath>..\Sprints_ARM_TivaC\Sprints_ARM_MC01\src\Config\Nvic_Lcfg.c</FilePath>
             </File>
             <File>
-              <FileName>Port_Cfg.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\Sprints_ARM_TivaC\Sprints_ARM_MC01\src\Config\Port_Cfg.h</FilePath>
-            </File>
-            <File>
               <FileName>Port_Lcfg.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\Sprints_ARM_TivaC\Sprints_ARM_MC01\src\Config\Port_Lcfg.c</FilePath>
+            </File>
+            <File>
+              <FileName>ADC_Lcfg.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Sprints_ARM_TivaC\Sprints_ARM_MC01\src\Config\ADC_Lcfg.c</FilePath>
             </File>
           </Files>
         </Group>

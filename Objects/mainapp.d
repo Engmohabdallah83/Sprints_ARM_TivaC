@@ -2,3 +2,8 @@
 .\objects\mainapp.o: ..\Sprints_ARM_TivaC\Sprints_ARM_MC01\src\common\std_types.h
 .\objects\mainapp.o: ..\Sprints_ARM_TivaC\Sprints_ARM_MC01\src\common\Platform_Types.h
 .\objects\mainapp.o: ..\Sprints_ARM_TivaC\Sprints_ARM_MC01\src\common\Compiler.h
+.\objects\mainapp.o: ..\Sprints_ARM_TivaC\Sprints_ARM_MC01\src\common\mcu_hw.h
+.\objects\mainapp.o: ..\Sprints_ARM_TivaC\Sprints_ARM_MC01\src\mcal\Inc\Cpu.h
+.\objects\mainapp.o: ..\Sprints_ARM_TivaC\Sprints_ARM_MC01\src\mcal\Inc\Dio.h
+.\objects\mainapp.o: ..\Sprints_ARM_TivaC\Sprints_ARM_MC01\src\mcal\Inc\Port.h
+.\objects\mainapp.o: ..\Sprints_ARM_TivaC\Sprints_ARM_MC01\src\Config\Port_Cfg.h

@@ -71,7 +71,7 @@ __Vectors       DCD     __initial_sp              ; Top of Stack
                 DCD     0                         ; Reserved
                 DCD     0                         ; Reserved
                 DCD     0                         ; Reserved
-                DCD     SVC_Handler               ; SVCall Handler
+                DCD     Isr_SvcHandler            ; SVCall Handler
                 DCD     DebugMon_Handler          ; Debug Monitor Handler
                 DCD     0                         ; Reserved
                 DCD     PendSV_Handler            ; PendSV Handler
@@ -265,8 +265,8 @@ UsageFault_Handler\
                 EXPORT  UsageFault_Handler        [WEAK]
                 B       .
                 ENDP
-SVC_Handler     PROC
-                EXPORT  SVC_Handler               [WEAK]
+Isr_SvcHandler  PROC
+                EXPORT  Isr_SvcHandler               [WEAK]
                 B       .
                 ENDP
 DebugMon_Handler\
